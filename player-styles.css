@@ -59,30 +59,30 @@ h2 {
     color: #004080;
 }
 
-#game-board-table {
+#game-board-table, #knock-off-games-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-#game-board-table th, #game-board-table td {
+#game-board-table th, #game-board-table td, #knock-off-games-table th, #knock-off-games-table td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: center;
     font-size: 1em;
 }
 
-#game-board-table th {
+#game-board-table th, #knock-off-games-table th {
     background-color: #004080;
     color: white;
     font-weight: bold;
     text-transform: uppercase;
 }
 
-#game-board-table tr:nth-child(even) {
+#game-board-table tr:nth-child(even), #knock-off-games-table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-#game-board-table tr:hover {
+#game-board-table tr:hover, #knock-off-games-table tr:hover {
     background-color: #cce4ff;
 }

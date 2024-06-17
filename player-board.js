@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const tableBody = document.querySelector('#game-board-table tbody');
+    const knockOffTableBody = document.querySelector('#knock-off-games-table tbody');
     const playerNameElement = document.getElementById('player-name');
     const totalScoreElement = document.getElementById('total-score');
     const pointsElement = document.getElementById('points');
@@ -30,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to populate table with data
-    function populateTable(data) {
+    function populateTable(data, tableBody, startRow, endRow) {
         data.forEach((row, index) => {
-            if (index >= 4 && index <= 39) { // Adjusted based on the actual rows to fetch
+            if (index >= startRow && index <= endRow) {
                 const tableRow = tableBody.insertRow();
                 
                 const team1 = tableRow.insertCell();
@@ -73,7 +74,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const excelFilePath = `../${playerConfig.excelFile}`;
             const data = await loadExcelData(excelFilePath, playerConfig.sheetName, playerConfig.dataRange);
             populateOverview(data);
-            populateTable(data);
+            populateTable(data, tableBody, 4, 39); // Group stage games
+            populateTable(data, knockOffTableBody, 55, 69); // Knock off games
         } catch (error) {
             console.error('Error displaying data:', error);
         }
