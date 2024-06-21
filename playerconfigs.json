@@ -1,0 +1,118 @@
+{
+    "players": [
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "N6:W77",
+            "excelFile": "Euro 2024 Spill PMK 1.xlsx",
+            "playerName": "Håvard (ChatGPT)"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "BL6:BU77",
+            "excelFile": "Euro 2024 Spill PMK 1.xlsx",
+            "playerName": "George"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "N6:W77",
+            "excelFile": "Euro 2024 Spill PMK 2.xlsx",
+            "playerName": "Ena"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "AH6:AQ77",
+            "excelFile": "Euro 2024 Spill PMK 1.xlsx",
+            "playerName": "Iben"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "AR6:BA77",
+            "excelFile": "Euro 2024 Spill PMK 1.xlsx",
+            "playerName": "Joakim"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "CZ6:DI77",
+            "excelFile": "Euro 2024 Spill PMK 1.xlsx",
+            "playerName": "Baptiste"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "AR6:BA77",
+            "excelFile": "Euro 2024 Spill Others 1.xlsx",
+            "playerName": "Flemming (IFA)"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "BV6:CE77",
+            "excelFile": "Euro 2024 Spill Others 1.xlsx",
+            "playerName": "Kjell Tore *Too little Too Late*"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "BL6:BU77",
+            "excelFile": "Euro 2024 Spill Others 1.xlsx",
+            "playerName": "Hanne Maren (TRAC)"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "BB6:BK77",
+            "excelFile": "Euro 2024 Spill PMK 1.xlsx",
+            "playerName": "Kristoffer (Fasiten)"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "X6:AG77",
+            "excelFile": "Euro 2024 Spill PMK 1.xlsx",
+            "playerName": "Levi (happy go lucky)"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "N6:W77",
+            "excelFile": "Euro 2024 Spill Others 1.xlsx",
+            "playerName": "Magnus (TRAC)"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "AH6:AQ77",
+            "excelFile": "Euro 2024 Spill PMK 1.xlsx",
+            "playerName": "Mateo (Virksomhet)"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "X6:AG77",
+            "excelFile": "Euro 2024 Spill PMK 2.xlsx",
+            "playerName": "Pavlo"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "BV6:CE77",
+            "excelFile": "Euro 2024 Spill PMK 1.xlsx",
+            "playerName": "Sverre"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "CF6:CO77",
+            "excelFile": "Euro 2024 Spill PMK 1.xlsx",
+            "playerName": "Therese"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "CP6:CY77",
+            "excelFile": "Euro 2024 Spill PMK 1.xlsx",
+            "playerName": "Wanja"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "X6:AG77",
+            "excelFile": "Euro 2024 Spill Others 1.xlsx",
+            "playerName": "Steve (TRAC)"
+        },
+        {
+            "sheetName": "Player Game Board",
+            "dataRange": "BB6:BK77",
+            "excelFile": "Euro 2024 Spill Others 1.xlsx",
+            "playerName": "Stian (Virksomhet)"
+        }
+    ]
+}

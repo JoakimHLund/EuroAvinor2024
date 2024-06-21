@@ -67,6 +67,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 previousScore = parseFloat(row[2]);
 
                 const tableRow = table.insertRow();
+
+                // Apply background color based on rank
+                if (rank === 1) {
+                    tableRow.style.backgroundColor = '#FFD700'; // light gold
+                } else if (rank === 2) {
+                    tableRow.style.backgroundColor = '#C0C0C0'; // silver
+                } else if (rank === 3) {
+                    tableRow.style.backgroundColor = '#CD7F32'; // bronze
+                }
+
                 headers.forEach((header, headerIndex) => {
                     const cell = tableRow.insertCell();
                     if (headerIndex === 0) {
@@ -74,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else if (headerIndex === 1) {
                         // Create a link for the player's name
                         const link = document.createElement('a');
-                        link.href = 'players/'+row[headerIndex].toLowerCase().replace(/\s+/g, '-') + '.html'; // Generate URL based on player name
+                        link.href = `player.html?player=${encodeURIComponent(row[headerIndex])}`;
                         link.innerText = row[headerIndex];
                         cell.appendChild(link);
                     } else {

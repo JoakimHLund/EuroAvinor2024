@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Game Board</title>
+    <link rel="stylesheet" href="player-styles.css">
+    <script>
+        async function loadPlayerConfig(playerName) {
+            try {
+                const response = await fetch('playerconfigs.json');
+                const data = await response.json();
+                const playerConfig = data.players.find(player => player.playerName === playerName);
+
+                if (playerConfig) {
+                    window.playerConfig = playerConfig;
+                    document.getElementById('player-name').innerText = playerConfig.playerName;
+
+                    // Dispatch a custom event when the player config is loaded
+                    document.dispatchEvent(new Event('playerConfigLoaded'));
+                } else {
+                    console.error('Player configuration not found.');
+                }
+            } catch (error) {
+                console.error('Error loading player configuration:', error);
+            }
+        }
+
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const playerName = urlParams.get('player') || 'Håvard (ChatGPT)';
+            loadPlayerConfig(playerName);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1 id="player-name">Loading...</h1>
+    </header>
+    <main>
+        <section id="overview">
+            <div class="overview-column">
+                <h3>Total Score</h3>
+                <p id="total-score">Loading...</p>
+            </div>
+            <div class="overview-column">
+                <h3>Points</h3>
+                <p id="points">Loading...</p>
+            </div>
+            <div class="overview-column">
+                <h3>Bonus</h3>
+                <p id="bonus">Loading...</p>
+            </div>
+        </section>
+        <section id="game-board">
+            <h2>Group stage games</h2>
+            <table id="game-board-table">
+                <thead>
+                    <tr>
+                        <th>Team 1</th>
+                        <th>Goals</th>
+                        <th>Goals</th>
+                        <th>Team 2</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+        <section id="knock-off-games">
+            <h2>Knockout games</h2>
+            <table id="knock-off-games-table">
+                <thead>
+                    <tr>
+                        <th>Team 1</th>
+                        <th>Goals</th>
+                        <th>Goals</th>
+                        <th>Team 2</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="player-board.js" defer></script>
+</body>
+</html>

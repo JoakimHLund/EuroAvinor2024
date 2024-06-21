@@ -6,11 +6,18 @@ body {
 }
 
 h1 {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center align the items horizontally */
     font-size: 2.5em;
     margin-bottom: 20px;
-    color: #0056b3; /* Darker blue */
+    color: #0056b3;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    height: 10vh; /* Adjust size as needed */
+    margin-right: 15px; /* Space between logo and text */
 }
 
 table {
@@ -31,7 +38,7 @@ th, td {
 }
 
 th {
-    background-color: #0056b3; /* Darker blue */
+    background-color: #0056b3;
     color: white;
     font-weight: bold;
     text-transform: uppercase;
@@ -54,12 +61,12 @@ td:first-child {
 }
 
 td:nth-child(3) {
-    color: #0056b3; /* Darker blue */
+    color: black;
     font-weight: bold;
 }
 
 a {
-    color: #0056b3; /* Darker blue */
+    color: black;
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -69,17 +76,13 @@ a:hover {
 }
 
 @media (max-width: 600px) {
+    /* Hide columns beyond the third one */
+    th:nth-child(n+4), td:nth-child(n+4) {
+        display: none;
+    }
+    
     table, th, td {
-        display: block;
-        width: 100%;
-    }
-    
-    th, td {
-        padding: 10px;
-        text-align: right;
-    }
-    
-    th {
-        text-align: left;
+        display: table-cell;
+        width: auto;
     }
 }
