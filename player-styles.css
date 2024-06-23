@@ -86,3 +86,57 @@ h2 {
 #game-board-table tr:hover, #knock-off-games-table tr:hover {
     background-color: #cce4ff;
 }
+
+
+#group-predictions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#group-predictions-table th, #group-predictions-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    font-size: 1em;
+}
+
+#group-predictions-table th {
+    background-color: #004080;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#group-predictions-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#group-predictions-table tr:hover {
+    background-color: #cce4ff;
+}
+
+.flag-img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.country-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .country-container {
+        flex-direction: column;
+    }
+
+    .flag-img {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
+
