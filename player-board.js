@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (flagCode) {
                 const img = document.createElement('img');
-                img.src = `/img/flag/${flagCode}.svg`;
+                img.src = `img/flag/${flagCode}.svg`;
                 img.alt = countryName;
                 img.classList.add('flag-img');
                 container.appendChild(img);
