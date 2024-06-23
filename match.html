@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Info</title>
+    <link rel="stylesheet" href="match-styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script>
+        let countryFlags = {};
+        let playerConfigs = [];
+
+        async function loadFlags() {
+            try {
+                const response = await fetch('country-flags.json');
+                countryFlags = await response.json();
+            } catch (error) {
+                console.error('Error loading country flags:', error);
+            }
+        }
+
+        async function loadPlayerConfigs() {
+            try {
+                const response = await fetch('playerconfigs.json');
+                const data = await response.json();
+                playerConfigs = data.players;
+            } catch (error) {
+                console.error('Error loading player configs:', error);
+            }
+        }
+
+        function createFlagImage(countryName) {
+            const flagCode = countryFlags[countryName];
+            const container = document.createElement('span');
+            container.classList.add('country-container');
+
+            if (flagCode) {
+                const img = document.createElement('img');
+                img.src = `img/flag/${flagCode}.svg`;
+                img.alt = countryName;
+                img.classList.add('flag-img');
+                container.appendChild(img);
+            }
+
+            const nameSpan = document.createElement('span');
+            nameSpan.innerText = countryName;
+            container.appendChild(nameSpan);
+
+            return container;
+        }
+
+        async function loadMatchData(matchNumber) {
+            try {
+                await loadFlags();
+                await loadPlayerConfigs();
+
+                const matchPromises = playerConfigs.map(async (config) => {
+                    const response = await fetch(config.excelFile);
+                    const data = await response.arrayBuffer();
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const worksheet = workbook.Sheets[config.sheetName];
+                    const range = XLSX.utils.decode_range(config.dataRange);
+                    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+                    let rowIndex;
+                    if (matchNumber <= 36) {
+                        rowIndex = matchNumber + 8; // For first 36 matches
+                    } else {
+                        rowIndex = matchNumber + 23; // For matches after 36
+                    }
+
+                    const matchRow = jsonData[rowIndex];
+
+                    // Extract data based on player's data range
+                    const playerGoals1 = matchRow[range.s.c + 2];
+                    const playerGoals2 = matchRow[range.s.c + 3];
+                    const playerPoints = matchRow[range.s.c + 8];
+
+                    return { config, playerGoals1, playerGoals2, playerPoints, matchRow };
+                });
+
+                const matches = await Promise.all(matchPromises);
+
+                matches.forEach(({ config, playerGoals1, playerGoals2, playerPoints, matchRow }) => {
+                    if (matchRow) {
+                        const team1Element = document.getElementById('team1');
+                        const team2Element = document.getElementById('team2');
+                        const goals1Element = document.getElementById('goals1');
+                        const goals2Element = document.getElementById('goals2');
+                        const playerPredictionsTable = document.getElementById('player-predictions-table').getElementsByTagName('tbody')[0];
+
+                        team1Element.innerHTML = '';
+                        team2Element.innerHTML = '';
+                        goals1Element.innerText = matchRow[7];
+                        goals2Element.innerText = matchRow[8];
+
+                        team1Element.appendChild(createFlagImage(matchRow[6]));
+                        team2Element.appendChild(createFlagImage(matchRow[9]));
+
+                        const goals1 = parseInt(matchRow[7]);
+                        const goals2 = parseInt(matchRow[8]);
+
+                        if (goals1 > goals2) {
+                            goals1Element.classList.add('win');
+                            goals2Element.classList.add('lose');
+                        } else if (goals2 > goals1) {
+                            goals2Element.classList.add('win');
+                            goals1Element.classList.add('lose');
+                        }
+
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${config.playerName}</td>
+                            <td>${playerGoals1}</td>
+                            <td>${playerGoals2}</td>
+                            <td>${playerPoints !== undefined ? playerPoints : ''}</td>
+                        `;
+
+                        // Apply conditional formatting only if match goals are not undefined or empty
+                        if (goals1Element.innerText && goals2Element.innerText) {
+                            if (playerPoints === 6) {
+                                row.classList.add('high-points');
+                            } else if (playerPoints === 0) {
+                                row.classList.add('low-points');
+                            }
+                        }
+
+                        playerPredictionsTable.appendChild(row);
+                    } else {
+                        console.error('Match data not found.');
+                    }
+                });
+            } catch (error) {
+                console.error('Error loading match data:', error);
+            }
+        }
+
+        window.onload = async function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const matchNumber = parseInt(urlParams.get('match')) || 1;
+            await loadMatchData(matchNumber);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Match Info</h1>
+    </header>
+    <main>
+        <section id="match-info">
+            <h2>Match Details</h2>
+            <div class="match-details">
+                <div class="box" id="team1">Loading...</div>
+                <div class="box alt-color" id="goals1">Loading...</div>
+                <div class="box alt-color" id="goals2">Loading...</div>
+                <div class="box" id="team2">Loading...</div>
+            </div>
+        </section>
+        <section id="player-predictions">
+            <h2>Player Predictions</h2>
+            <table id="player-predictions-table">
+                <thead>
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Goals 1</th>
+                        <th>Goals 2</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

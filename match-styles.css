@@ -1,0 +1,122 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+header {
+    background-color: #004080;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section {
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-top: 0;
+    color: #004080;
+}
+
+.match-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.box {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    width: 20%;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.box.alt-color {
+    background-color: #e0f7ff;
+}
+
+.box.win {
+    background-color: lightgreen;
+}
+
+.box.lose {
+    background-color: lightcoral;
+}
+
+.box:hover {
+    background-color: #cce4ff;
+}
+
+.flag-img {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 5px;
+    vertical-align: middle;
+}
+
+.country-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#player-predictions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#player-predictions-table th, #player-predictions-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    font-size: 1em;
+}
+
+#player-predictions-table th {
+    background-color: #004080;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#player-predictions-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#player-predictions-table tr:hover {
+    background-color: #cce4ff;
+}
+
+#player-predictions-table tr.high-points {
+    background-color: lightgreen;
+}
+
+#player-predictions-table tr.low-points {
+    background-color: lightcoral;
+}
