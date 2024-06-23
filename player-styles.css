@@ -134,6 +134,20 @@ h2 {
         flex-direction: column;
     }
 
+    #group-predictions-table th, #group-predictions-table td {
+        border: 1px solid #ddd;
+        padding: 4px;
+        text-align: center;
+        font-size: 0.8em;
+    }
+
+    #game-board-table th, #game-board-table td, #knock-off-games-table th, #knock-off-games-table td {
+        border: 1px solid #ddd;
+        padding: 4px;
+        text-align: center;
+        font-size: 0.8em;
+    }
+
     .flag-img {
         margin-right: 0;
         margin-bottom: 5px;
