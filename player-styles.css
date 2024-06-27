@@ -153,4 +153,7 @@ h2 {
         margin-bottom: 5px;
     }
 }
-
+#game-board-table th:nth-child(6),
+#game-board-table td:nth-child(6) {
+    display: none;
+}

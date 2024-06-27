@@ -85,6 +85,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     const points = tableRow.insertCell();
                     points.innerText = row[8] || '';
+                    
+                    const bonus = tableRow.insertCell(); // Add this line to include the Bonus column
+                    bonus.innerText = row[9] || ''; // Assuming the bonus is the next column after points
                 }
             });
         }
